@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="footer footer-center p-4 bg-base-300 text-base-content">
+    <footer className="footer footer-center p-4 text-base-content">
       <div>
         <Link href="https://app.atomize.xyz/pickupyourens.eth">
           <a>Atomize</a>

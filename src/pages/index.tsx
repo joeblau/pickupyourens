@@ -3,7 +3,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { SearchIcon } from "@heroicons/react/solid";
-import Footer from "../components/footer";
+import Footer from "~/components/Footer";
 
 const Home: NextPage = () => {
   const router = useRouter();
