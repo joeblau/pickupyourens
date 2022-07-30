@@ -11,8 +11,8 @@ const DropPage = () => {
   const { tweetId, next_token } = router.query;
 
   const dropLink = next_token
-    ? `/api/${tweetId}?next_token=${next_token}`
-    : `/api/${tweetId}`;
+    ? `/api/drop/${tweetId}?next_token=${next_token}`
+    : `/api/drop/${tweetId}`;
   const { data: results } = useSWR(dropLink);
 
   const shortAddress = (address: string) => {
