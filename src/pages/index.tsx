@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
-import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { SearchIcon } from "@heroicons/react/solid";
 import Footer from "~/components/Footer";
+import Meta from "~/components/Meta";
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -18,11 +18,7 @@ const Home: NextPage = () => {
 
   return (
     <div className="hero min-h-screen">
-      <Head>
-        <title>Pick up Your ENS</title>
-        <meta name="description" content="Pick up your ENS" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Meta />
       <div className="hero-content text-center">
         <div className="max-w-sm md:max-w-md">
           <div className="flex flex-col space-y-10">

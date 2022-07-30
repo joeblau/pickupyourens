@@ -1,10 +1,10 @@
 import { useRouter } from "next/router";
-import Head from "next/head";
+import { BanIcon } from "@heroicons/react/solid";
 import useSWR from "swr";
 import Link from "next/link";
 import Image from "next/image";
 import Footer from "~/components/Footer";
-import { BanIcon } from "@heroicons/react/solid";
+import Meta from "~/components/Meta";
 
 const DropPage = () => {
   const router = useRouter();
@@ -89,11 +89,7 @@ const DropPage = () => {
 
   return (
     <div className="hero">
-      <Head>
-        <title>Pick up Your ENS</title>
-        <meta name="description" content="Pick up your ENS drop" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Meta />
 
       <div className="hero-content text-center flex flex-col">
         <Link href="/">
