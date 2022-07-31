@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { getDrop } from "~/lib/getDrop";
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse

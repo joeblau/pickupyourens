@@ -1,6 +1,7 @@
+import type { NextApiRequest, NextApiResponse } from "next";
 import { ethers } from "ethers";
 import { getDrop } from "~/lib/getDrop";
-import type { NextApiRequest, NextApiResponse } from "next";
+import Twitter from "twitter-api-v2";
 
 const alchemyAPIKey = process.env.ALCHEMY_API_KEY as string;
 
@@ -19,6 +20,7 @@ export default async function handler(
 
   // loop while value exists
   let keepGoing = true;
+  let username = null;
   let nextDrop = {
     tweetId,
     next_token,
@@ -26,7 +28,8 @@ export default async function handler(
 
   const addresses = [];
   while (keepGoing) {
-    const { meta, data: drops }: any = await getDrop(nextDrop);
+    const { meta, data: drops, user }: any = await getDrop(nextDrop);
+    username = user?.username;
 
     for (const drop of drops) {
       const ens = (drop.text.match(/ (.*\.eth)/g)?.[0] as string).trim();
@@ -46,4 +49,17 @@ export default async function handler(
   }
 
   res.status(200).json(addresses);
+
+  if (username) {
+    const client = new Twitter({
+      appKey: process.env.TWITTER_CONSUMER_KEY,
+      appSecret: process.env.TWITTER_CONSUMER_SECRET,
+      accessToken: process.env.TWITTER_TOKEN,
+      accessSecret: process.env.TWITTER_TOKEN_SECRET,
+    });
+
+    const status = `@${username} just picked up their ENS at https://pickupyourens.xyz #dropyourens → #pickupyourens`;
+
+    client.v1.tweet(status);
+  }
 }

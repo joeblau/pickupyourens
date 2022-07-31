@@ -112,7 +112,7 @@ const DropPage = () => {
             ) : (
               <>
                 <div className="flex">
-                  <Link href="https://www.3rm.co/">
+                  <Link href={`/api/download/${tweetId}`}>
                     <a className="btn">Download All</a>
                   </Link>
                 </div>
